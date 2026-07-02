@@ -1,0 +1,40 @@
+{
+  // Northlight — Cloudflare Workers static-site deployment
+  // Docs: https://developers.cloudflare.com/workers/static-assets/
+
+  "name": "northlight",
+  "compatibility_date": "2025-01-01",
+
+  // No `main` entry — this is a pure static site.
+  // Wrangler handles all routing through the assets binding below.
+
+  // ── Assets ──────────────────────────────────────────────────
+  // Only files inside ./public are uploaded.
+  // .git/, wrangler.jsonc, .gitignore, node_modules/ stay at root
+  // and are never included in the asset bundle.
+  "assets": {
+    "directory": "./public",
+    // Serve index.html for any path that has no matching file,
+    // so deep-links and 404s fall back gracefully.
+    "not_found_handling": "single-page-application"
+  },
+
+  // ── Routing ─────────────────────────────────────────────────
+  // custom_domain: true tells Cloudflare to create/maintain a
+  // DNS record automatically and serve the Worker on this domain.
+  // The domain must already be active in your Cloudflare account.
+  "routes": [
+    {
+      "pattern": "northlight.dpdns.org",
+      "custom_domain": true
+    }
+  ],
+
+  // ── Runtime flags ───────────────────────────────────────────
+  "compatibility_flags": ["nodejs_compat"],
+
+  // ── Observability ───────────────────────────────────────────
+  "observability": {
+    "enabled": true
+  }
+}

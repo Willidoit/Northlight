@@ -1,0 +1,12 @@
+# Cloudflare Wrangler local state — never commit
+.wrangler/
+
+# Node — not used for this project but guard anyway
+node_modules/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
