@@ -361,24 +361,162 @@ function rafThrottle(fn) {
 
   const NAV_HEIGHT = 90;
 
+  function setActive(id) {
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${id}`) {
+        link.classList.add('nav-link--active');
+      } else {
+        link.classList.remove('nav-link--active');
+      }
+    });
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href === `#${id}`) {
-            link.style.color = 'var(--text-primary)';
-          } else {
-            link.style.color = '';
-          }
-        });
+        setActive(entry.target.getAttribute('id'));
       }
     });
   }, {
-    threshold: 0.3,
-    rootMargin: `-${NAV_HEIGHT}px 0px -50% 0px`,
+    threshold: 0.25,
+    rootMargin: `-${NAV_HEIGHT}px 0px -45% 0px`,
   });
 
   sections.forEach(section => observer.observe(section));
 })();
+
+/* ============================================================
+   SUPPORT FORM — mailto: handler with client-side validation
+   ============================================================ */
+
+(function initSupportForm() {
+  const form        = document.getElementById('support-form');
+  if (!form) return;
+
+  const nameInput   = document.getElementById('support-name');
+  const emailInput  = document.getElementById('support-email');
+  const topicSelect = document.getElementById('support-topic');
+  const msgInput    = document.getElementById('support-message');
+  const submitBtn   = document.getElementById('support-submit-btn');
+  const successEl   = document.getElementById('form-success');
+
+  const errorName    = document.getElementById('error-name');
+  const errorEmail   = document.getElementById('error-email');
+  const errorTopic   = document.getElementById('error-topic');
+  const errorMessage = document.getElementById('error-message');
+
+  const SUPPORT_EMAIL = 'northlight.app@gmail.com';
+
+  const TOPIC_LABELS = {
+    bug:     'Bug Report',
+    feature: 'Feature Request',
+    billing: 'Billing & Licensing',
+    compat:  'Compatibility Issue',
+    other:   'Other',
+  };
+
+  /** Show an error on a field */
+  function showError(inputEl, errorEl, message) {
+    inputEl.classList.add('input-error');
+    errorEl.textContent = message;
+  }
+
+  /** Clear error on a field */
+  function clearError(inputEl, errorEl) {
+    inputEl.classList.remove('input-error');
+    errorEl.textContent = '';
+  }
+
+  /** Simple email format check */
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  }
+
+  /** Validate all fields, return true if clean */
+  function validate() {
+    let ok = true;
+
+    if (!nameInput.value.trim()) {
+      showError(nameInput, errorName, 'Please enter your name.');
+      ok = false;
+    } else {
+      clearError(nameInput, errorName);
+    }
+
+    if (!emailInput.value.trim()) {
+      showError(emailInput, errorEmail, 'Please enter your email address.');
+      ok = false;
+    } else if (!isValidEmail(emailInput.value)) {
+      showError(emailInput, errorEmail, 'Please enter a valid email address.');
+      ok = false;
+    } else {
+      clearError(emailInput, errorEmail);
+    }
+
+    if (!topicSelect.value) {
+      showError(topicSelect, errorTopic, 'Please select a topic.');
+      ok = false;
+    } else {
+      clearError(topicSelect, errorTopic);
+    }
+
+    if (!msgInput.value.trim()) {
+      showError(msgInput, errorMessage, 'Please enter a message.');
+      ok = false;
+    } else if (msgInput.value.trim().length < 10) {
+      showError(msgInput, errorMessage, 'Message must be at least 10 characters.');
+      ok = false;
+    } else {
+      clearError(msgInput, errorMessage);
+    }
+
+    return ok;
+  }
+
+  /* Clear errors on input so they don't linger */
+  [nameInput, emailInput, topicSelect, msgInput].forEach(el => {
+    const errEl = document.getElementById(`error-${el.name}`);
+    if (errEl) {
+      el.addEventListener('input', () => clearError(el, errEl));
+      el.addEventListener('change', () => clearError(el, errEl));
+    }
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    const name    = nameInput.value.trim();
+    const email   = emailInput.value.trim();
+    const topic   = TOPIC_LABELS[topicSelect.value] || topicSelect.value;
+    const message = msgInput.value.trim();
+
+    const subject = encodeURIComponent(`[Northlight Support] ${topic} — from ${name}`);
+    const body    = encodeURIComponent(
+      `Hi Northlight team,\n\n` +
+      `${message}\n\n` +
+      `---\n` +
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Topic: ${topic}`
+    );
+
+    const mailtoHref = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}&reply-to=${encodeURIComponent(email)}`;
+
+    /* Open the user's mail client */
+    window.location.href = mailtoHref;
+
+    /* Show the success banner */
+    if (successEl) {
+      successEl.hidden = false;
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /* Dim the submit button so it's clear the action fired */
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sent!';
+  });
+})();
+

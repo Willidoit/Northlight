@@ -54,6 +54,100 @@
 }
 
 /* ============================================================
+   0b. DARK MODE TOKENS  — system preference
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Backgrounds */
+    --bg-white:    #1c1c1e;
+    --bg-gray:     #2c2c2e;
+    --bg-nav:      rgba(28, 28, 30, 0.85);
+
+    /* Text */
+    --text-primary:   #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --text-tertiary:  #6e6e73;
+
+    /* Accent stays blue — still readable on dark */
+    --accent:         #2997ff;
+    --accent-dark:    #1a84eb;
+    --accent-light:   rgba(41, 151, 255, 0.15);
+
+    /* Borders */
+    --border:         #3a3a3c;
+    --border-light:   #2c2c2e;
+
+    /* Shadows — lighter base so they show on dark bg */
+    --card-shadow:          0 1px 4px rgba(0, 0, 0, 0.4);
+    --card-shadow-featured: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Nav scrolled state */
+  .nav-wrapper.nav-scrolled {
+    background: rgba(28, 28, 30, 0.96);
+    box-shadow: 0 1px 0 var(--border);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    background: rgba(28, 28, 30, 0.98);
+  }
+
+  /* Glass frame for hero visual */
+  .glass-frame-inner {
+    background: #2c2c2e;
+  }
+
+  /* BA divider stays visible */
+  .ba-divider {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  /* BA handle */
+  .ba-handle {
+    background: #3a3a3c;
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+
+  /* Hamburger bars */
+  .nav-hamburger:hover {
+    background: var(--bg-gray);
+  }
+
+  /* Featured pricing card gets a slightly lighter bg to pop */
+  .pricing-card--featured {
+    background: #2c2c2e;
+  }
+
+  /* Table header row */
+  .comparison-table thead th {
+    background: #2c2c2e;
+  }
+
+  /* FAQ list */
+  .faq-list {
+    background: #1c1c1e;
+  }
+  .faq-item {
+    background: #1c1c1e;
+  }
+  .faq-question:hover {
+    background: #2c2c2e;
+  }
+
+  /* Comparison row hover */
+  .comparison-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  /* Social link hover */
+  .social-link:hover {
+    background: var(--bg-gray);
+  }
+}
+
+/* ============================================================
    1. RESET & BASE
    ============================================================ */
 *, *::before, *::after {
@@ -94,6 +188,7 @@ button   { font: inherit; cursor: pointer; border: none; background: none; }
 ul, ol   { list-style: none; }
 h1, h2, h3, h4 { font-family: var(--font); }
 
+
 :focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
@@ -115,8 +210,6 @@ h1, h2, h3, h4 { font-family: var(--font); }
   padding: var(--s15) 0;
   position: relative;
 }
-
-/* Each section declares its own bg explicitly (white / gray alternation) */
 
 /* Section headers — always centered, tight */
 .section-header {
@@ -258,14 +351,25 @@ h1, h2, h3, h4 { font-family: var(--font); }
   font-size: 14px;
   font-weight: 400;
   color: var(--text-secondary);
-  transition: color var(--tx);
+  transition: color var(--tx), font-weight var(--tx);
   padding: 4px 0;
+  position: relative;
 }
 
 .nav-link:hover { color: var(--text-primary); }
 
-/* Remove the animated underline — too decorative */
-.nav-link::after { display: none; }
+/* Active / current section highlight */
+.nav-link.nav-link--active {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+/* Static underline off for non-active links */
+.nav-link:not(.nav-link--active)::after { display: none; }
 
 /* Beta badge */
 .beta-badge {
@@ -362,15 +466,6 @@ h1, h2, h3, h4 { font-family: var(--font); }
   overflow: hidden;
 }
 
-/* Kill the old dark bg/glow machinery — hide it */
-.hero-bg,
-.hero-vignette,
-.glow,
-.privacy-glow-bg,
-.final-cta-glow {
-  display: none !important;
-}
-
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -388,7 +483,6 @@ h1, h2, h3, h4 { font-family: var(--font); }
   gap: var(--s3);
 }
 
-/* Eyebrow — just a small text label, no glowing pill */
 .hero-eyebrow {
   display: inline-block;
   font-size: 14px;
@@ -401,9 +495,6 @@ h1, h2, h3, h4 { font-family: var(--font); }
   width: auto;
 }
 
-/* Remove the animated dot */
-.hero-eyebrow::before { display: none; }
-
 .hero-headline {
   font-size: clamp(40px, 7vw, 72px);
   font-weight: 600;
@@ -412,10 +503,9 @@ h1, h2, h3, h4 { font-family: var(--font); }
   color: var(--text-primary);
 }
 
-/* Keep the italic emphasis but use accent color sparingly */
 .hero-headline em {
   font-style: italic;
-  color: var(--text-primary);     /* no teal — monochrome */
+  color: var(--text-primary);
   display: inline-block;
   padding-bottom: 0.05em;
 }
@@ -443,10 +533,6 @@ h1, h2, h3, h4 { font-family: var(--font); }
   color: var(--text-secondary);
 }
 
-/* Kill old teal svg color */
-.hero-footnote svg { color: var(--text-secondary); }
-
-/* Hero visual — clean frame, no gradient border */
 .hero-visual {
   display: flex;
   justify-content: flex-end;
@@ -457,7 +543,6 @@ h1, h2, h3, h4 { font-family: var(--font); }
   width: 100%;
   max-width: 600px;
   border-radius: var(--radius);
-  /* Clean border + shadow — no gradient */
   border: 1px solid var(--border);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -478,129 +563,8 @@ h1, h2, h3, h4 { font-family: var(--font); }
   display: block;
 }
 
-/* Scroll hint — subtle, no dark theming */
-.scroll-hint {
-  position: absolute;
-  bottom: var(--s3);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-.scroll-dot {
-  width: 24px;
-  height: 40px;
-  border: 1.5px solid var(--border);
-  border-radius: 980px;
-  position: relative;
-}
-.scroll-dot::before {
-  content: '';
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
-  height: 7px;
-  background: var(--text-tertiary);
-  border-radius: 2px;
-  animation: scroll-pulse 2s ease-in-out infinite;
-}
-@keyframes scroll-pulse {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
-  50%       { transform: translateX(-50%) translateY(6px); opacity: 0.2; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .scroll-dot::before { animation: none; }
-}
-
 /* ============================================================
-   6. BEFORE/AFTER SLIDER  — functional, clean
-   ============================================================ */
-.before-after-slider {
-  position: relative;
-  overflow: hidden;
-  height: 200px;
-  border-top: 1px solid var(--border-light);
-  cursor: col-resize;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.ba-before,
-.ba-after {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.ba-before img,
-.ba-after img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-
-.ba-after { clip-path: inset(0 50% 0 0); }
-
-.ba-after img {
-  filter: contrast(1.15) saturate(1.35) brightness(0.95);
-}
-
-.ba-label {
-  position: absolute;
-  bottom: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 980px;
-  padding: 3px 10px;
-}
-
-.ba-label-before { left: 12px; }
-.ba-label-after  { right: 12px; }
-
-.ba-divider {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateX(-50%);
-  box-shadow: none;        /* remove teal glow */
-}
-
-.ba-handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 36px;
-  height: 36px;
-  background: #ffffff;
-  color: var(--text-primary);
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  cursor: col-resize;
-  transition: box-shadow var(--tx);
-}
-
-.ba-handle:hover,
-.ba-handle:focus-visible {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  transform: translate(-50%, -50%);   /* no scale jump */
-}
-
-/* ============================================================
-   7. FEATURES  — even 3-col grid, equal cards
+   7. FEATURES
    ============================================================ */
 .features {
   background: var(--bg-gray);
@@ -612,10 +576,9 @@ h1, h2, h3, h4 { font-family: var(--font); }
   gap: var(--s3);
 }
 
-/* Remove the bento span-2 — all 6 cards are equal */
 .feature-card,
 .feature-card--wide {
-  grid-column: span 1;          /* override any old span */
+  grid-column: span 1;
   background: var(--bg-white);
   border-radius: var(--radius);
   border: 1px solid var(--border-light);
@@ -1036,6 +999,15 @@ h1, h2, h3, h4 { font-family: var(--font); }
   justify-content: center;
 }
 
+/* Grayed-out state for non-active pricing CTAs */
+.pricing-btn--grayed {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+  border-color: var(--border);
+  color: var(--text-tertiary);
+}
+
 .pricing-note {
   font-size: 12px;
   color: var(--text-tertiary);
@@ -1128,7 +1100,263 @@ h1, h2, h3, h4 { font-family: var(--font); }
 }
 
 /* ============================================================
-   12. FINAL CTA  — clean, centered, white
+   12. SUPPORT  — two-column: info cards + contact form
+   ============================================================ */
+.support {
+  background: var(--bg-white);
+}
+
+/* Two-column layout: cards left, form right */
+.support-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--s8);
+  align-items: start;
+}
+
+/* Info cards stack */
+.support-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.support-card {
+  background: var(--bg-gray);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: var(--s3) var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: box-shadow var(--tx);
+}
+
+.support-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.support-card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.support-card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent);
+}
+
+.support-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.support-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.support-email-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity var(--tx);
+  margin-top: 2px;
+}
+.support-email-link:hover { opacity: 0.75; }
+
+/* Form wrapper */
+.support-form-wrap {
+  background: var(--bg-gray);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: var(--s5);
+  box-shadow: var(--card-shadow);
+}
+
+.support-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+/* Individual field group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.005em;
+}
+
+/* Shared input styles */
+.form-input {
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--text-primary);
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.12);
+}
+
+/* Select arrow */
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+/* Textarea */
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+/* Inline error */
+.form-error {
+  font-size: 12px;
+  color: #d93025;
+  min-height: 16px;
+  display: block;
+}
+
+.form-input.input-error {
+  border-color: #d93025;
+  box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.1);
+}
+
+/* Submit button */
+.support-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--s1);
+  font-size: 16px;
+  padding: 14px;
+}
+
+/* Success banner */
+.form-success {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  background: rgba(52, 199, 89, 0.1);
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  margin-top: var(--s2);
+}
+
+.form-success svg {
+  width: 24px;
+  height: 24px;
+  stroke: #34c759;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.form-success strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.form-success p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Dark mode overrides for form */
+@media (prefers-color-scheme: dark) {
+  .support-form-wrap {
+    background: #2c2c2e;
+    border-color: var(--border);
+  }
+
+  .support-card {
+    background: #2c2c2e;
+    border-color: var(--border);
+  }
+
+  .form-input {
+    background: #1c1c1e;
+    border-color: var(--border);
+    color: var(--text-primary);
+  }
+
+  .form-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(41, 151, 255, 0.15);
+  }
+
+  .form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  }
+
+  .form-select option {
+    background: #2c2c2e;
+    color: var(--text-primary);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .support-layout {
+    grid-template-columns: 1fr;
+    gap: var(--s5);
+  }
+}
+
+@media (max-width: 640px) {
+  .support-form-wrap {
+    padding: var(--s3);
+  }
+
+  .support-cards {
+    gap: var(--s2);
+  }
+
+  .support-card {
+    padding: var(--s2) var(--s3);
+  }
+}
+
+/* ============================================================
+   13. FINAL CTA  — clean, centered, white
    ============================================================ */
 .final-cta {
   background: var(--bg-white);
