@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northlight — The Mac Photo Editor Built for You</title>
+  <meta name="description" content="Northlight is a fast, local-first RAW photo editor built exclusively for macOS and Apple Silicon. Own it for $50 — or use it free during beta. Your photos never leave your Mac." />
+  <meta name="keywords" content="mac photo editor, lightroom alternative, RAW editor macOS, local photo editing, Apple Silicon photo editor, non-destructive editing" />
+  <meta name="author" content="Northlight" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://northlightapp.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://northlightapp.com" />
+  <meta property="og:title" content="Northlight — The Mac Photo Editor Built for You" />
+  <meta property="og:description" content="A fast, local-first RAW photo editor built exclusively for macOS. Own it for $50, or free during beta. No subscriptions required." />
+  <meta property="og:image" content="https://northlightapp.com/og-image.jpg" />
+  <!-- TODO: Replace og:image with your actual Open Graph image (1200×630) -->
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Northlight — The Mac Photo Editor Built for You" />
+  <meta name="twitter:description" content="Fast, local-first RAW editing for Mac. Own it forever for $50. Free during beta." />
+  <meta name="twitter:image" content="https://northlightapp.com/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <!-- System font stack — no external font load needed -->
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Northlight",
+    "applicationCategory": "GraphicsApplication",
+    "operatingSystem": "macOS",
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free during beta"
+      },
+      {
+        "@type": "Offer",
+        "price": "50",
+        "priceCurrency": "USD",
+        "description": "One-time purchase — own it forever"
+      },
+      {
+        "@type": "Offer",
+        "price": "5",
+        "priceCurrency": "USD",
+        "description": "Optional monthly subscription"
+      }
+    ],
+    "description": "A fast, local-first RAW photo editor built exclusively for macOS and Apple Silicon. Non-destructive editing, advanced masking, color grading, and catalog management — without mandatory subscriptions.",
+    "url": "https://northlightapp.com",
+    "screenshot": "https://northlightapp.com/app-screenshot.png",
+    "softwareVersion": "1.0 Beta",
+    "processorRequirements": "Apple Silicon or Intel Mac",
+    "memoryRequirements": "8GB RAM",
+    "storageRequirements": "500MB",
+    "releaseNotes": "Public beta — free to download and use."
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header class="nav-wrapper" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <!-- Logo -->
+      <a href="#hero" class="nav-logo" aria-label="Northlight home">
+        <img src="icon.png" alt="Northlight app icon" class="nav-icon" width="32" height="32" />
+        <span class="nav-logo-text">Northlight</span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <ul class="nav-links" role="list">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#comparison" class="nav-link">Why Northlight</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+
+      <!-- CTA + badge -->
+      <div class="nav-cta-group">
+        <span class="beta-badge" aria-label="Currently free during beta">Free during beta</span>
+        <!-- TODO: Replace href with your actual Mac download link -->
+        <a href="#download" class="btn btn-primary nav-btn" id="nav-download-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 1 3.1 19.5c-.6.1-.8-.3-.8-.6v-2.2c0-.7-.3-1.2-.7-1.4 2.2-.2 4.5-1.1 4.5-4.8 0-1.1-.4-1.9-1-2.6.1-.3.4-1.3-.1-2.6 0 0-.8-.3-2.7 1a9.4 9.4 0 0 0-5 0C7.5 5.3 6.7 5.6 6.7 5.6c-.5 1.3-.2 2.3-.1 2.6-.6.7-1 1.6-1 2.6 0 3.7 2.3 4.6 4.4 4.9-.3.2-.5.7-.6 1.3-.5.2-1.8.6-2.6-.8 0 0-.5-.9-1.4-.9 0 0-.9 0-.1.6 0 0 .6.3 1 1.4 0 0 .5 1.6 3 1v2c0 .3-.2.7-.8.6A10 10 0 0 1 12 2z"/>
+          </svg>
+          Download for Mac
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="hamburger-btn">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" hidden>
+      <ul role="list">
+        <li><a href="#features" class="nav-link mobile-nav-link">Features</a></li>
+        <li><a href="#comparison" class="nav-link mobile-nav-link">Why Northlight</a></li>
+        <li><a href="#pricing" class="nav-link mobile-nav-link">Pricing</a></li>
+        <li><a href="#faq" class="nav-link mobile-nav-link">FAQ</a></li>
+      </ul>
+      <!-- TODO: Replace href with your actual Mac download link -->
+      <a href="#download" class="btn btn-primary mobile-cta">Download free beta for Mac</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-headline">
+      <!-- Atmospheric background -->
+      <!-- hero-bg removed: clean white background -->
+
+      <!-- Hero content: split layout -->
+      <div class="hero-inner container">
+        <!-- Left: copy -->
+        <div class="hero-copy" data-reveal>
+          <p class="hero-eyebrow">Now in free public beta</p>
+          <h1 class="hero-headline" id="hero-headline">
+            The photo editor<br />
+            <em>built for your Mac.</em><br />
+            And owned by you.
+          </h1>
+          <p class="hero-sub">
+            Fast RAW editing, local-first privacy, and Apple Silicon performance — yours for a one-time $50. Free during beta.
+          </p>
+          <div class="hero-actions">
+            <!-- TODO: Replace href with your actual Mac download link -->
+            <a href="#download" class="btn btn-primary btn-lg" id="hero-download-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download free beta for Mac
+            </a>
+            <a href="#features" class="btn btn-ghost btn-lg">See features</a>
+          </div>
+          <p class="hero-footnote">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            macOS 13+ · Apple Silicon &amp; Intel · No account required
+          </p>
+        </div>
+
+        <!-- Right: app screenshot in glass frame -->
+        <div class="hero-visual" data-reveal data-reveal-delay="150">
+          <div class="hero-glass-frame">
+            <div class="glass-frame-inner">
+              <!-- TODO: Replace with your actual app screenshot -->
+              <img
+                src="app-screenshot.png"
+                alt="Northlight photo editor interface showing RAW editing, color grading, and masking tools on macOS"
+                class="hero-screenshot"
+                width="900"
+                height="600"
+              />
+              <!-- Before/After slider overlaid at bottom of screenshot -->
+              <div class="before-after-slider" role="region" aria-label="Before and after photo editing comparison" id="slider-region">
+                <div class="ba-before" aria-hidden="true">
+                  <!-- TODO: Replace with real before photo -->
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Mountain landscape before editing — flat, underexposed RAW" loading="lazy" />
+                  <span class="ba-label ba-label-before">Before</span>
+                </div>
+                <div class="ba-after" aria-hidden="true">
+                  <!-- TODO: Replace with real after photo -->
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&sat=-10&con=30" alt="Mountain landscape after Northlight editing — rich tones, dramatic sky" loading="lazy" />
+                  <span class="ba-label ba-label-after">After</span>
+                </div>
+                <div class="ba-divider" id="ba-divider" aria-hidden="true">
+                  <div class="ba-handle" id="ba-handle" role="slider" aria-label="Before/after comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURES
+    ============================================================ -->
+    <section class="features section" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <h2 class="section-title" id="features-heading">
+            Pro tools.<br />No compromises.
+          </h2>
+          <p class="section-sub">Everything you need to edit at a professional level — nothing you don't.</p>
+        </header>
+
+        <div class="features-grid">
+
+          <!-- Feature 1 -->
+          <article class="feature-card" data-reveal>
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                <circle cx="12" cy="13" r="3"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Fast RAW Processing</h3>
+            <p class="feature-body">Open, decode, and render RAW files from Canon, Nikon, Sony, Fujifilm, and more in milliseconds — tuned for Apple Silicon's Neural Engine.</p>
+            <span class="feature-tag">Apple Silicon optimized</span>
+          </article>
+
+          <!-- Feature 2 -->
+          <article class="feature-card" data-reveal data-reveal-delay="60">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/>
+                <path d="M2 12h20"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Advanced Masking</h3>
+            <p class="feature-body">AI-powered subject, sky, and background detection. Radial, linear, and luminosity masks. Precise brush refinement. Mask everything, non-destructively.</p>
+          </article>
+
+          <!-- Feature 3 -->
+          <article class="feature-card" data-reveal data-reveal-delay="120">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="18" r="2"/><circle cx="16" cy="6" r="2"/>
+                <line x1="8" y1="16" x2="8" y2="4"/><line x1="16" y1="20" x2="16" y2="8"/>
+                <line x1="4" y1="12" x2="20" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Cinematic Color Grading</h3>
+            <p class="feature-body">HSL, curves, tone wheels, and creative color science borrowed from cinema. Craft the exact look you see in your head — and save it as a preset.</p>
+          </article>
+
+          <!-- Feature 4 -->
+          <article class="feature-card" data-reveal data-reveal-delay="60">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Non-Destructive Editing</h3>
+            <p class="feature-body">Every adjustment is reversible, forever. Your original files are always untouched — edits live as a lightweight sidecar, not baked in.</p>
+          </article>
+
+          <!-- Feature 5 -->
+          <article class="feature-card" data-reveal data-reveal-delay="120">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="m2 20 4-4h12l4 4"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Catalog &amp; Library</h3>
+            <p class="feature-body">Smart folders, star ratings, color labels, and fast full-text search across thousands of photos. Organize everything without moving a single file.</p>
+          </article>
+
+          <!-- Feature 6 -->
+          <article class="feature-card" data-reveal data-reveal-delay="180">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v1m0 16v1M4.2 4.2l.7.7m14 14 .7.7M3 12H4m16 0h1M4.9 19.1l.7-.7m14-14 .7-.7M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Presets &amp; Profiles</h3>
+            <p class="feature-body">Build and share your own looks. Import presets from other apps. Apply them with a single click — with real-time live preview.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHY NORTHLIGHT — COMPARISON TABLE
+    ============================================================ -->
+    <section class="comparison section" id="comparison" aria-labelledby="comparison-heading">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <h2 class="section-title" id="comparison-heading">Why photographers switch</h2>
+          <p class="section-sub">The math is simple. The principle is even simpler.</p>
+        </header>
+
+        <div class="comparison-glass" data-reveal>
+          <div class="comparison-table-wrap" role="region" aria-label="Northlight vs Lightroom comparison table">
+            <table class="comparison-table" aria-label="Feature comparison between Northlight and Adobe Lightroom">
+              <thead>
+                <tr>
+                  <th scope="col" class="table-feature-col">Feature</th>
+                  <th scope="col" class="table-northlight-col">
+                    <span class="table-brand northlight-brand">
+                      <img src="icon.png" alt="" width="20" height="20" aria-hidden="true" />
+                      Northlight
+                    </span>
+                  </th>
+                  <th scope="col" class="table-lightroom-col">Adobe Lightroom</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="table-feature">Pricing model</td>
+                  <td class="table-nl table-check"><span class="check-pill">$50 one-time or $5/mo</span></td>
+                  <td class="table-lr table-cross">$10–22/month, forever</td>
+                </tr>
+                <tr>
+                  <td class="table-feature">3-year total cost</td>
+                  <td class="table-nl table-check"><span class="check-pill">$50 one-time</span></td>
+                  <td class="table-lr table-cross">$360–792</td>
+                </tr>
+                <tr>
+                  <td class="table-feature">Owns your edits if you cancel</td>
+                  <td class="table-nl table-check">
+                    <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg>
+                    Always
+                  </td>
+                  <td class="table-lr table-cross">
+                    <svg class="icon-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="No"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    No — edits locked
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table-feature">Photos stored locally</td>
+                  <td class="table-nl table-check">
+                    <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg>
+                    Always on your Mac
+                  </td>
+                  <td class="table-lr table-cross">
+                    <svg class="icon-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="No"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Cloud sync required
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table-feature">Mac-native optimization</td>
+                  <td class="table-nl table-check">
+                    <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg>
+                    Apple Silicon · Metal
+                  </td>
+                  <td class="table-lr table-cross">
+                    <svg class="icon-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="No"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Cross-platform port
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table-feature">Account required</td>
+                  <td class="table-nl table-check">
+                    <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg>
+                    None
+                  </td>
+                  <td class="table-lr table-cross">
+                    <svg class="icon-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="No"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Adobe ID mandatory
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table-feature">Works offline, fully</td>
+                  <td class="table-nl table-check">
+                    <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Yes"><polyline points="20 6 9 17 4 12"/></svg>
+                    Completely offline
+                  </td>
+                  <td class="table-lr table-cross">
+                    <svg class="icon-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="No"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Limited without cloud
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRIVACY / LOCAL-FIRST
+    ============================================================ -->
+    <section class="privacy section" id="privacy" aria-labelledby="privacy-heading">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <h2 class="section-title" id="privacy-heading">
+            Your photos.<br />Your Mac. Full stop.
+          </h2>
+          <p class="section-sub">No cloud. No servers. No tracking. Northlight is software — not a service.</p>
+        </header>
+
+        <div class="privacy-grid">
+
+          <article class="privacy-card" data-reveal>
+            <div class="privacy-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Never uploaded</h3>
+            <p>Your photos and edits are stored on your Mac's local disk. They never touch our servers — because we don't have any for your data.</p>
+          </article>
+
+          <article class="privacy-card" data-reveal data-reveal-delay="80">
+            <div class="privacy-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3>No AI training</h3>
+            <p>Your images are never used to train machine learning models — ours or anyone else's. What you shoot stays with you.</p>
+          </article>
+
+          <article class="privacy-card" data-reveal data-reveal-delay="160">
+            <div class="privacy-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3>You own your files</h3>
+            <p>Cancel anytime — your edits, your catalog, and your photos remain exactly where they always were. Nothing is held hostage behind a subscription.</p>
+          </article>
+
+          <article class="privacy-card" data-reveal data-reveal-delay="240">
+            <div class="privacy-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <h3>Works fully offline</h3>
+            <p>On a plane, in a cabin, at a remote shoot location — Northlight works anywhere your Mac goes, with no internet required.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRICING
+    ============================================================ -->
+    <section class="pricing section" id="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <h2 class="section-title" id="pricing-heading">Simple, fair pricing</h2>
+          <p class="section-sub">One-time purchase or optional monthly — your choice. And right now, it's completely free.</p>
+        </header>
+
+        <div class="pricing-grid">
+
+          <!-- Tier 1: Monthly -->
+          <article class="pricing-card" data-reveal>
+            <div class="pricing-top">
+              <p class="pricing-tier-name">Monthly</p>
+              <div class="pricing-amount">
+                <span class="pricing-currency">$</span>
+                <span class="pricing-price">5</span>
+                <span class="pricing-period">/month</span>
+              </div>
+              <p class="pricing-tagline">For those who prefer to spread the cost.</p>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Full access to all features</li>
+              <li>Free updates while subscribed</li>
+              <li>Cancel anytime — keep your edits</li>
+              <li>No account required</li>
+              <li>Works completely offline</li>
+            </ul>
+            <!-- TODO: Replace href with your actual download link -->
+            <a href="#download" class="btn btn-outline pricing-btn">Get started</a>
+          </article>
+
+          <!-- Tier 2: Beta (FEATURED) -->
+          <article class="pricing-card pricing-card--featured" data-reveal data-reveal-delay="80" aria-label="Featured plan: Free Beta">
+            <div class="pricing-badge">Current offer</div>
+            <div class="pricing-top">
+              <p class="pricing-tier-name">Free Beta</p>
+              <div class="pricing-amount">
+                <span class="pricing-price pricing-free">Free</span>
+              </div>
+              <p class="pricing-tagline">Full app, no limits, no credit card. While beta lasts.</p>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Complete pro feature set</li>
+              <li>All future beta updates</li>
+              <li>No account, no login</li>
+              <li>Works completely offline</li>
+              <li>Lock in one-time price on launch</li>
+            </ul>
+            <!-- TODO: Replace href with your actual download link -->
+            <a href="#download" class="btn btn-primary pricing-btn" id="pricing-download-btn">Download free beta</a>
+            <p class="pricing-note">Transitions to paid on full release. Pricing locked in for early adopters.</p>
+          </article>
+
+          <!-- Tier 3: One-time -->
+          <article class="pricing-card" data-reveal data-reveal-delay="160">
+            <div class="pricing-top">
+              <p class="pricing-tier-name">One-Time</p>
+              <div class="pricing-amount">
+                <span class="pricing-currency">$</span>
+                <span class="pricing-price">50</span>
+                <span class="pricing-period">once</span>
+              </div>
+              <p class="pricing-tagline">Own it forever. Pay once, use always.</p>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Lifetime license — own it forever</li>
+              <li>Free updates included</li>
+              <li>No subscription, ever</li>
+              <li>No account required</li>
+              <li>Works completely offline</li>
+            </ul>
+            <!-- TODO: Replace href with your actual purchase link -->
+            <a href="#download" class="btn btn-outline pricing-btn">Buy once</a>
+          </article>
+
+        </div>
+
+        <!-- Comparison callout -->
+        <p class="pricing-footnote" data-reveal>
+          Adobe Lightroom costs $10–22/month — that's up to $792 over three years, with no guarantee your edits survive cancellation.<br />
+          Northlight: $50, once. Or free right now.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ
+    ============================================================ -->
+    <section class="faq section" id="faq" aria-labelledby="faq-heading">
+      <div class="container faq-container">
+        <header class="section-header" data-reveal>
+          <h2 class="section-title" id="faq-heading">Questions, answered</h2>
+        </header>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem" data-reveal>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1" id="faq-btn-1">
+              Is Northlight really free right now?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-btn-1" hidden>
+              <p>Yes — completely. During the public beta, Northlight is free to download and use with no limits. No credit card, no trial countdown, no account signup. We want photographers to actually use it before we ask for anything.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem" data-reveal>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2">
+              What happens to pricing after the beta ends?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-btn-2" hidden>
+              <p>When we launch publicly, Northlight will be $50 one-time or $5/month. Beta users who download during this period will be notified in advance and offered an early-adopter discount on the one-time license. Nothing changes automatically — you won't be charged without choosing to.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem" data-reveal>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3" id="faq-btn-3">
+              Should I pick the one-time purchase or the monthly plan?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-3" role="region" aria-labelledby="faq-btn-3" hidden>
+              <p>If you'll use Northlight for more than a year, the $50 one-time purchase pays for itself in ten months versus the monthly plan. If you'd rather try it at a lower initial commitment, $5/month is there. Either way, your edits and catalog are always yours to keep — canceling the monthly plan never locks you out of your files.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem" data-reveal>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4" id="faq-btn-4">
+              Can I import my Lightroom catalog?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-4" role="region" aria-labelledby="faq-btn-4" hidden>
+              <p>Northlight can import your Lightroom catalog — including star ratings, color labels, collections, and folder structure. Basic edits and metadata transfer cleanly. Complex Lightroom-specific adjustments are translated to their closest equivalent. We're actively expanding compatibility with every beta update.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem" data-reveal>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5" id="faq-btn-5">
+              What Macs does it support?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-5" role="region" aria-labelledby="faq-btn-5" hidden>
+              <p>Northlight requires macOS 13 Ventura or later. It runs natively on Apple Silicon (M1, M2, M3, and M4 series) and is also fully compatible with Intel Macs. Performance is significantly faster on Apple Silicon — RAW decoding and export can be 3–5× quicker than on comparable Intel hardware.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem" data-reveal>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6" id="faq-btn-6">
+              Is my photo data private? What gets sent to your servers?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-6" role="region" aria-labelledby="faq-btn-6" hidden>
+              <p>Your photos, edits, and catalog never leave your Mac. We don't have servers that touch your creative work. The only network request Northlight makes is an optional anonymous crash report (opt-in) and a license check on purchase. That's it. No telemetry, no AI training pipeline, no ad data.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA
+    ============================================================ -->
+    <section class="final-cta section" aria-labelledby="cta-heading">
+      <div class="container" data-reveal>
+        <img src="icon.png" alt="Northlight app icon" class="cta-icon" width="72" height="72" loading="lazy" />
+        <h2 class="cta-headline" id="cta-heading">Start editing for free, today.</h2>
+        <p class="cta-sub">No account. No subscription. Just your Mac and your photos.</p>
+        <!-- TODO: Replace href with your actual Mac download link -->
+        <a href="#download" class="btn btn-primary btn-xl" id="final-download-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download free beta for Mac
+        </a>
+        <p class="cta-footnote">macOS 13+ · Apple Silicon &amp; Intel · Free during beta</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <!-- Logo -->
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo footer-logo" aria-label="Northlight home">
+          <img src="icon.png" alt="Northlight app icon" width="28" height="28" loading="lazy" />
+          <span class="nav-logo-text">Northlight</span>
+        </a>
+        <p class="footer-tagline">The photo editor built for your Mac.</p>
+      </div>
+
+      <!-- Nav columns -->
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div class="footer-nav-col">
+          <p class="footer-nav-label">Product</p>
+          <ul role="list">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#comparison">Why Northlight</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <p class="footer-nav-label">Company</p>
+          <ul role="list">
+            <!-- TODO: Add real links -->
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-col">
+          <p class="footer-nav-label">Legal</p>
+          <ul role="list">
+            <!-- TODO: Add real links -->
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Social -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/north.light.app" class="social-link" aria-label="Northlight on Instagram" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://github.com/Willidoit/Northlight" class="social-link" aria-label="Northlight on GitHub" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="footer-copy">&copy; <span id="footer-year">2025</span> Northlight. All rights reserved. Made for Mac with care.</p>
+        <p class="footer-disclaimer">Northlight is not affiliated with Adobe Systems. Lightroom is a trademark of Adobe Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
