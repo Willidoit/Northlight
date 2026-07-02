@@ -1310,6 +1310,7 @@ h1, h2, h3, h4 { font-family: var(--font); }
   }
 }
 
+
 /* ============================================================
    15. RESPONSIVE — TABLET (≤ 1024px)
    ============================================================ */
@@ -1325,11 +1326,11 @@ h1, h2, h3, h4 { font-family: var(--font); }
     text-align: center;
   }
 
-  .hero-copy    { align-items: center; }
-  .hero-sub     { max-width: 52ch; }
-  .hero-actions { justify-content: center; }
+  .hero-copy     { align-items: center; }
+  .hero-sub      { max-width: 52ch; }
+  .hero-actions  { justify-content: center; }
   .hero-footnote { justify-content: center; }
-  .hero-visual  { justify-content: center; }
+  .hero-visual   { justify-content: center; }
   .hero-glass-frame { max-width: 640px; }
 
   /* Grids: 2 col */
@@ -1364,7 +1365,7 @@ h1, h2, h3, h4 { font-family: var(--font); }
 @media (max-width: 640px) {
   /* ── Section rhythm ── */
   .section { padding: 64px 0; }
-  .section-header { margin-bottom: var(--s5); }
+  .section-header { margin-bottom: var(--s4); }
 
   .section-title {
     font-size: clamp(24px, 7.5vw, 34px);
@@ -1376,23 +1377,17 @@ h1, h2, h3, h4 { font-family: var(--font); }
     max-width: 100%;
   }
 
-  /* ── Container: tighter gutters on small screens ── */
+  /* ── Container: tighter gutters ── */
   .container { padding: 0 var(--s2); }
 
-  /* ── Hero ──
-     Left-align on small screens — easier for thumb to anchor on */
-  .hero { min-height: 100svh; }   /* svh excludes browser chrome */
+  /* ── Hero — centered, inherits from tablet ── */
+  .hero { min-height: 100svh; }
 
   .hero-inner {
     padding-top: var(--s5);
     padding-bottom: var(--s5);
     gap: var(--s4);
-    text-align: left;
   }
-
-  .hero-copy    { align-items: flex-start; }
-  .hero-actions { justify-content: flex-start; }
-  .hero-footnote { justify-content: flex-start; }
 
   .hero-headline {
     font-size: clamp(28px, 9vw, 40px);
@@ -1402,11 +1397,15 @@ h1, h2, h3, h4 { font-family: var(--font); }
 
   .hero-sub { font-size: 16px; max-width: 100%; }
 
-  /* CTAs: primary full-width, ghost shrink-wraps */
+  /* CTAs: centered column, capped width */
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
     gap: var(--s2);
+    width: 100%;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-actions .btn {
@@ -1415,90 +1414,78 @@ h1, h2, h3, h4 { font-family: var(--font); }
     min-height: 48px;
   }
 
-  /* Cap screenshot height — don't let it push copy off screen */
-  .hero-glass-frame { max-width: 100%; border-radius: var(--radius); }
+  .hero-glass-frame { max-width: 100%; }
   .before-after-slider { height: 140px; }
-
-  /* Hide scroll hint — unnecessary on touch */
   .scroll-hint { display: none; }
 
-  /* ── Features: single col, icon + text row layout ──
-     Horizontal layout saves vertical space on small screens */
+  /* ── Features: single column, clean vertical cards ── */
   .features-grid {
     grid-template-columns: 1fr;
     gap: var(--s2);
   }
 
   .feature-card {
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
-    gap: var(--s2);
+    gap: 10px;
     padding: var(--s3);
   }
 
-  .feature-icon-wrap {
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
+  .feature-icon-wrap { margin-top: 0; }
   .feature-title { font-size: 17px; }
-  .feature-body  { font-size: 14px; }
-  .feature-tag   { margin-top: var(--s1); }
+  .feature-body  { font-size: 15px; }
 
-  /* ── Comparison table ──
-     Sticky first column keeps row labels visible while scrolling */
-  .comparison-glass { border-radius: var(--radius); }
+  /* ── Comparison — 2-col only (hide Lightroom column) ──
+     No horizontal scrolling. Shows Feature | Northlight only.
+     A note below explains it's vs Lightroom. */
   .comparison-table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: visible;
   }
 
-  .comparison-table { font-size: 13px; }
+  .comparison-table .table-lightroom-col,
+  .comparison-table .table-lr { display: none; }
 
-  .table-feature,
-  .table-nl,
-  .table-lr { padding: 12px 12px; }
-
-  /* Stick the feature label column */
   .comparison-table td.table-feature,
   .comparison-table th.table-feature-col {
-    position: sticky;
-    left: 0;
-    background: var(--bg-white);
-    z-index: 1;
-    min-width: 110px;
-    max-width: 130px;
+    position: static;
+    min-width: 0;
+    max-width: none;
   }
 
-  .comparison-table thead th.table-feature-col {
-    background: var(--bg-gray);
-    z-index: 2;
+  .comparison-table        { font-size: 14px; width: 100%; }
+  .comparison-table thead th { padding: 12px 16px; }
+  .table-feature-col         { width: 55%; }
+  .table-northlight-col      { width: 45%; }
+  .table-feature             { padding: 14px 16px; }
+  .table-nl                  { padding: 14px 16px; }
+
+  .comparison-mobile-note {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: var(--s2);
   }
 
-  /* ── Privacy: single col, horizontal card layout ── */
+  /* ── Privacy: single col, clean vertical cards ── */
   .privacy-grid {
     grid-template-columns: 1fr;
     gap: var(--s2);
   }
 
   .privacy-card {
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
-    gap: var(--s2);
+    gap: 10px;
     padding: var(--s3);
   }
 
-  .privacy-icon { flex-shrink: 0; }
   .privacy-card h3 { font-size: 15px; }
   .privacy-card p  { font-size: 14px; }
 
   /* ── Pricing ── */
-  .pricing-grid {
-    max-width: 100%;
-    gap: var(--s2);
-  }
-
-  .pricing-card { padding: var(--s3); }
+  .pricing-grid  { max-width: 100%; gap: var(--s2); }
+  .pricing-card  { padding: var(--s3); }
   .pricing-price { font-size: 40px; }
   .pricing-free  { font-size: 40px; }
   .pricing-footnote { font-size: 13px; padding-top: var(--s3); }
@@ -1509,8 +1496,7 @@ h1, h2, h3, h4 { font-family: var(--font); }
     padding: 16px var(--s2);
     min-height: 48px;
   }
-
-  .faq-answer { padding: 0 var(--s2) 16px; }
+  .faq-answer   { padding: 0 var(--s2) 16px; }
   .faq-answer p { font-size: 14px; }
 
   /* ── Final CTA ── */
@@ -1529,11 +1515,7 @@ h1, h2, h3, h4 { font-family: var(--font); }
 
   /* ── Footer ── */
   .footer-inner { gap: var(--s5); padding: var(--s6) 0; }
-
-  .footer-nav {
-    gap: var(--s5);
-    flex-wrap: wrap;
-  }
+  .footer-nav   { gap: var(--s5); flex-wrap: wrap; }
 
   .footer-bottom .container {
     flex-direction: column;
@@ -1544,16 +1526,15 @@ h1, h2, h3, h4 { font-family: var(--font); }
   .footer-copy,
   .footer-disclaimer { font-size: 12px; }
 
-  /* ── Global: minimum 44px touch targets ── */
+  /* ── Global touch targets ── */
   .btn, .btn-lg, .btn-xl { min-height: 44px; }
-  .social-link { width: 40px; height: 40px; }
-  .mobile-cta .btn { min-height: 48px; font-size: 17px; }
-  .mobile-nav-link { min-height: 44px; display: flex; align-items: center; }
+  .social-link            { width: 40px; height: 40px; }
+  .mobile-cta .btn        { min-height: 48px; font-size: 17px; }
+  .mobile-nav-link        { min-height: 44px; display: flex; align-items: center; }
 }
 
 /* ============================================================
    17. RESPONSIVE — SMALL PHONE (≤ 390px)
-   iPhone SE / 13 mini / older Androids
    ============================================================ */
 @media (max-width: 390px) {
   .hero-headline { font-size: clamp(24px, 8vw, 32px); }
@@ -1566,21 +1547,17 @@ h1, h2, h3, h4 { font-family: var(--font); }
 }
 
 /* ============================================================
-   18. SAFE AREA INSETS
-   iPhone notch / Dynamic Island / Android cutouts
+   18. SAFE AREA INSETS (notch / Dynamic Island / home indicator)
    ============================================================ */
 @supports (padding: env(safe-area-inset-bottom)) {
-  /* Footer clears the home indicator */
   .footer-bottom {
     padding-bottom: calc(var(--s3) + env(safe-area-inset-bottom));
   }
 
-  /* Mobile menu clears the home indicator */
   .mobile-menu {
     padding-bottom: calc(var(--s3) + env(safe-area-inset-bottom));
   }
 
-  /* Nav clears the Dynamic Island / notch on landscape */
   @media (max-width: 1024px) {
     .nav-inner {
       padding-left:  max(var(--s3), env(safe-area-inset-left));
@@ -1600,4 +1577,3 @@ h1, h2, h3, h4 { font-family: var(--font); }
     }
   }
 }
-
