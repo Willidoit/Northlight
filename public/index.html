@@ -90,7 +90,6 @@
         <li><a href="#features" class="nav-link">Features</a></li>
         <li><a href="#comparison" class="nav-link">Why Northlight</a></li>
         <li><a href="#pricing" class="nav-link">Pricing</a></li>
-        <li><a href="#faq" class="nav-link">FAQ</a></li>
         <li><a href="#support" class="nav-link">Support</a></li>
       </ul>
 
@@ -113,12 +112,11 @@
     </nav>
 
     <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" hidden>
+      <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" hidden>
       <ul role="list">
         <li><a href="#features" class="nav-link mobile-nav-link">Features</a></li>
         <li><a href="#comparison" class="nav-link mobile-nav-link">Why Northlight</a></li>
         <li><a href="#pricing" class="nav-link mobile-nav-link">Pricing</a></li>
-        <li><a href="#faq" class="nav-link mobile-nav-link">FAQ</a></li>
         <li><a href="#support" class="nav-link mobile-nav-link">Support</a></li>
       </ul>
       <!-- TODO: Replace href with your actual Mac download link -->
@@ -543,6 +541,104 @@
       </div>
     </section>
 
+    <!-- FAQ moved below Support for better flow -->
+
+    <!-- ============================================================
+         SUPPORT
+    ============================================================ -->
+    <section class="support section" id="support" aria-labelledby="support-heading">
+      <div class="container">
+        <header class="section-header" data-reveal>
+          <h2 class="section-title" id="support-heading">We're here to help.</h2>
+          <p class="section-sub">Have a question, bug report, or feature request? Send us a message and we'll get back to you as soon as possible.</p>
+        </header>
+
+        <div class="support-layout" data-reveal data-reveal-delay="80">
+
+          <!-- Contact cards -->
+          <div class="support-cards">
+            <div class="support-card">
+              <div class="support-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <h3>Email Support</h3>
+              <p>We typically respond within 24 hours on weekdays.</p>
+              <a href="mailto:northlight.app@gmail.com" class="support-email-link">northlight.app@gmail.com</a>
+            </div>
+
+            <div class="support-card">
+              <div class="support-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <h3>Common Questions</h3>
+              <p>Check the FAQ below — it covers pricing, beta access, Lightroom migration, and privacy.</p>
+              <a href="#faq" class="support-email-link">Browse FAQ &rarr;</a>
+            </div>
+
+            <div class="support-card">
+              <div class="support-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </div>
+              <h3>Bug Reports &amp; GitHub</h3>
+              <p>Found a bug? Open an issue on GitHub for the fastest response from the team.</p>
+              <a href="https://github.com/Willidoit/Northlight" target="_blank" rel="noopener noreferrer" class="support-email-link">Open an issue &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Contact form -->
+          <div class="support-form-wrap">
+            <form class="support-form" id="support-form" novalidate>
+              <div class="form-group">
+                <label for="support-name" class="form-label">Your name</label>
+                <input type="text" id="support-name" name="name" class="form-input" placeholder="Jane Smith" autocomplete="name" required />
+                <span class="form-error" id="error-name" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="support-email" class="form-label">Your email</label>
+                <input type="email" id="support-email" name="email" class="form-input" placeholder="jane@example.com" autocomplete="email" required />
+                <span class="form-error" id="error-email" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="support-topic" class="form-label">Topic</label>
+                <select id="support-topic" name="topic" class="form-input form-select" required>
+                  <option value="" disabled selected>Select a topic&hellip;</option>
+                  <option value="bug">Bug report</option>
+                  <option value="feature">Feature request</option>
+                  <option value="billing">Billing &amp; licensing</option>
+                  <option value="compat">Compatibility issue</option>
+                  <option value="other">Other</option>
+                </select>
+                <span class="form-error" id="error-topic" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="support-message" class="form-label">Message</label>
+                <textarea id="support-message" name="message" class="form-input form-textarea" placeholder="Describe your issue or question in as much detail as you can..." rows="5" required></textarea>
+                <span class="form-error" id="error-message" role="alert" aria-live="polite"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary support-submit" id="support-submit-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Send message
+              </button>
+
+              <!-- Success state -->
+              <div class="form-success" id="form-success" hidden aria-live="polite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <div>
+                  <strong>Email draft opened</strong>
+                  <p>Your message has been pre-filled in your mail app. It has not been sent — please hit Send in your email client to deliver it to northlight.app@gmail.com.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ============================================================
          FAQ
     ============================================================ -->
@@ -619,102 +715,6 @@
     </section>
 
     <!-- ============================================================
-         SUPPORT
-    ============================================================ -->
-    <section class="support section" id="support" aria-labelledby="support-heading">
-      <div class="container">
-        <header class="section-header" data-reveal>
-          <h2 class="section-title" id="support-heading">We're here to help.</h2>
-          <p class="section-sub">Have a question, bug report, or feature request? Send us a message and we'll get back to you as soon as possible.</p>
-        </header>
-
-        <div class="support-layout" data-reveal data-reveal-delay="80">
-
-          <!-- Contact cards -->
-          <div class="support-cards">
-            <div class="support-card">
-              <div class="support-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <h3>Email Support</h3>
-              <p>We typically respond within 24 hours on weekdays.</p>
-              <a href="mailto:northlight.app@gmail.com" class="support-email-link">northlight.app@gmail.com</a>
-            </div>
-
-            <div class="support-card">
-              <div class="support-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              </div>
-              <h3>Common Questions</h3>
-              <p>Check the FAQ section above — it covers pricing, beta access, Lightroom migration, and privacy.</p>
-              <a href="#faq" class="support-email-link">Browse FAQ &rarr;</a>
-            </div>
-
-            <div class="support-card">
-              <div class="support-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </div>
-              <h3>Bug Reports &amp; GitHub</h3>
-              <p>Found a bug? Open an issue on GitHub for the fastest response from the team.</p>
-              <a href="https://github.com/Willidoit/Northlight" target="_blank" rel="noopener noreferrer" class="support-email-link">Open an issue &rarr;</a>
-            </div>
-          </div>
-
-          <!-- Contact form -->
-          <div class="support-form-wrap">
-            <form class="support-form" id="support-form" novalidate>
-              <div class="form-group">
-                <label for="support-name" class="form-label">Your name</label>
-                <input type="text" id="support-name" name="name" class="form-input" placeholder="Jane Smith" autocomplete="name" required />
-                <span class="form-error" id="error-name" role="alert" aria-live="polite"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="support-email" class="form-label">Your email</label>
-                <input type="email" id="support-email" name="email" class="form-input" placeholder="jane@example.com" autocomplete="email" required />
-                <span class="form-error" id="error-email" role="alert" aria-live="polite"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="support-topic" class="form-label">Topic</label>
-                <select id="support-topic" name="topic" class="form-input form-select" required>
-                  <option value="" disabled selected>Select a topic&hellip;</option>
-                  <option value="bug">Bug report</option>
-                  <option value="feature">Feature request</option>
-                  <option value="billing">Billing &amp; licensing</option>
-                  <option value="compat">Compatibility issue</option>
-                  <option value="other">Other</option>
-                </select>
-                <span class="form-error" id="error-topic" role="alert" aria-live="polite"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="support-message" class="form-label">Message</label>
-                <textarea id="support-message" name="message" class="form-input form-textarea" placeholder="Describe your issue or question in as much detail as you can..." rows="5" required></textarea>
-                <span class="form-error" id="error-message" role="alert" aria-live="polite"></span>
-              </div>
-
-              <button type="submit" class="btn btn-primary support-submit" id="support-submit-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                Send message
-              </button>
-
-              <!-- Success state -->
-              <div class="form-success" id="form-success" hidden aria-live="polite">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                <div>
-                  <strong>Message sent!</strong>
-                  <p>Your email client should open with your message pre-filled. Hit send to reach us at northlight.app@gmail.com.</p>
-                </div>
-              </div>
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
          FINAL CTA
     ============================================================ -->
     <section class="final-cta section" aria-labelledby="cta-heading">
@@ -771,9 +771,8 @@
         <div class="footer-nav-col">
           <p class="footer-nav-label">Legal</p>
           <ul role="list">
-            <!-- TODO: Add real links -->
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
           </ul>
         </div>
       </nav>

@@ -62,6 +62,7 @@
     --bg-white:    #1c1c1e;
     --bg-gray:     #2c2c2e;
     --bg-nav:      rgba(28, 28, 30, 0.85);
+    --bg-nav-scrolled: rgba(28, 28, 30, 0.96);
 
     /* Text */
     --text-primary:   #f5f5f7;
@@ -80,12 +81,6 @@
     /* Shadows — lighter base so they show on dark bg */
     --card-shadow:          0 1px 4px rgba(0, 0, 0, 0.4);
     --card-shadow-featured: 0 4px 20px rgba(0, 0, 0, 0.6);
-  }
-
-  /* Nav scrolled state */
-  .nav-wrapper.nav-scrolled {
-    background: rgba(28, 28, 30, 0.96);
-    box-shadow: 0 1px 0 var(--border);
   }
 
   /* Mobile menu */
@@ -304,7 +299,10 @@ h1, h2, h3, h4 { font-family: var(--font); }
 }
 
 .nav-wrapper.nav-scrolled {
-  background: rgba(255, 255, 255, 0.92);
+  /* Keep the same translucent nav background (do not force a light color)
+     but add a subtle divider so the bar reads as scrolled without flipping
+     the theme in dark mode. */
+  background: var(--bg-nav);
   box-shadow: 0 1px 0 var(--border);
 }
 
@@ -561,6 +559,106 @@ h1, h2, h3, h4 { font-family: var(--font); }
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* ============================================================
+   6b. BEFORE / AFTER SLIDER
+   ============================================================ */
+.before-after-slider {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ba-before,
+.ba-after {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ba-before img,
+.ba-after img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Before: sepia/desaturated look to differentiate from after */
+.ba-before img {
+  filter: saturate(0.4) brightness(0.9);
+}
+
+/* After: full color */
+.ba-after {
+  clip-path: inset(0 50% 0 0);
+  z-index: 2;
+}
+
+.ba-label {
+  position: absolute;
+  bottom: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 3px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.ba-label-before { left: 12px; }
+.ba-label-after  { right: 12px; }
+
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  pointer-events: all;
+  cursor: col-resize;
+  z-index: 4;
+  transition: box-shadow 0.15s ease;
+}
+
+.ba-handle:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.ba-handle svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ============================================================
@@ -1109,8 +1207,8 @@ h1, h2, h3, h4 { font-family: var(--font); }
 /* Two-column layout: cards left, form right */
 .support-layout {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: var(--s8);
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--s6);
   align-items: start;
 }
 
@@ -1119,6 +1217,7 @@ h1, h2, h3, h4 { font-family: var(--font); }
   display: flex;
   flex-direction: column;
   gap: var(--s3);
+  align-items: center; /* center cards in the left column to avoid large empty space */
 }
 
 .support-card {
@@ -1130,6 +1229,10 @@ h1, h2, h3, h4 { font-family: var(--font); }
   flex-direction: column;
   gap: 6px;
   transition: box-shadow var(--tx);
+  width: 100%;
+  max-width: 360px; /* constrain card width for balanced layout */
+  align-items: center;
+  text-align: center;
 }
 
 .support-card:hover {
@@ -1233,8 +1336,12 @@ h1, h2, h3, h4 { font-family: var(--font); }
   cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 36px;
+  background-position: right 12px center;
+  background-size: 12px 12px;
+  padding-right: 44px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* Textarea */
@@ -1325,6 +1432,12 @@ h1, h2, h3, h4 { font-family: var(--font); }
 
   .form-select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-position: right 12px center;
+    background-size: 12px 12px;
+    padding-right: 44px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 
   .form-select option {

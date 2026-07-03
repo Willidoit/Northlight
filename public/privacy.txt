@@ -1,0 +1,12 @@
+Privacy Policy — Northlight
+
+Last updated: 2026
+
+Northlight is a local-first macOS application. We do not upload your photos, edits, or catalogs to our servers. Any network requests made by the app are described here:
+
+- Crash reporting (optional, opt-in) — anonymous and limited.
+- License validation on purchase — minimal information needed to verify a license.
+
+We do not use user photos to train machine learning models and we do not sell personal data.
+
+For questions, contact us at northlight.app@gmail.com

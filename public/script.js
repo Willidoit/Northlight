@@ -286,8 +286,6 @@ function rafThrottle(fn) {
    ============================================================ */
 
 (function initSmoothScroll() {
-  const NAV_HEIGHT = 72; // px — match nav height
-
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -298,7 +296,10 @@ function rafThrottle(fn) {
 
       e.preventDefault();
 
-      const top = target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+      // Compute current nav height dynamically so anchors account for responsive nav size
+      const navEl = document.querySelector('.nav-wrapper');
+      const navHeight = navEl ? navEl.offsetHeight : 72;
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
@@ -359,8 +360,6 @@ function rafThrottle(fn) {
   const navLinks = document.querySelectorAll('.nav-link');
   if (!sections.length || !navLinks.length) return;
 
-  const NAV_HEIGHT = 90;
-
   function setActive(id) {
     navLinks.forEach(link => {
       const href = link.getAttribute('href');
@@ -371,6 +370,9 @@ function rafThrottle(fn) {
       }
     });
   }
+  // Use the current nav height for observer rootMargin so the active state matches visible content
+  const navEl = document.querySelector('.nav-wrapper');
+  const NAV_HEIGHT = navEl ? navEl.offsetHeight : 90;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -514,9 +516,9 @@ function rafThrottle(fn) {
       successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    /* Dim the submit button so it's clear the action fired */
+    /* Dim the submit button so it's clear the action fired and preserve the icon */
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sent!';
+    submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Open email in your mail app';
   });
 })();
 
